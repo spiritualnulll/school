@@ -78,8 +78,18 @@ def main():
 
             except (ValueError, IndexError):
                 clear()
-                failure += 1
-                print(f"{Fore.RED}{Style.BRIGHT}Invalid input. Please enter a valid number or 'q'.{Style.RESET_ALL}")
+                failure += 1  # Increment failure counter on invalid selection
+                if failure < 5:
+                    print(f"{Fore.RED}{Style.BRIGHT}Invalid selection.{Style.RESET_ALL}")
+                elif 5 <= failure < 10:
+                    print(f"{Fore.RED}{Style.BRIGHT}Are you an idiot? Try to use this program correctly!!!.{Style.RESET_ALL}")
+                    time.sleep(0.3)
+                elif 10 <= failure < 20:
+                    print(f"{Fore.RED}{Style.BRIGHT}I quit this job, find the files yourself.{Style.RESET_ALL}")
+                    time.sleep(0.6)
+                    open_folder(current_path)
+                    time.sleep(1)
+                    break
                 time.sleep(1)
 
 if __name__ == "__main__":
